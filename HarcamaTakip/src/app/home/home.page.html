@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar style="--background: #1F2937; --color: #10B981;">
+    <ion-title>HARCAMA TAKİP UYGULAMASI</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #121212; --color: #E5E7EB;">
+  <!-- Üstteki özet kartı -->
+  <ion-card style="--background: #1F2937; --color: #E5E7EB; border-radius: 10px;">
+    <ion-card-header>
+      <ion-card-title style="color: #E5E7EB; font-size: 14px;">TOPLAM HARCAMA MİKTARI:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h1 style="color: #10B981; font-size: 35px; font-weight: bold;">
+        {{ toplam }} TL
+      </h1>
+    </ion-card-content>
+  </ion-card>
+
+  <div style="padding: 10px;">
+    <!-- Giriş alanları başlıkları büyük ve Türkçe karakterli -->
+    <ion-item style="--background: #1F2937; --color: #E5E7EB; margin-bottom: 5px;">
+      <ion-label position="floating" style="color: #10B981;">HARCAMA ADI GİRİNİZ</ion-label>
+      <ion-input [(ngModel)]="isim" type="text" placeholder="Örnek: Market Alışverişi"></ion-input>
+    </ion-item>
+
+    <ion-item style="--background: #1F2937; --color: #E5E7EB; margin-bottom: 5px;">
+      <ion-label position="floating" style="color: #10B981;">HARCAMA TUTARI (₺)</ion-label>
+      <ion-input [(ngModel)]="para" type="number" placeholder="0.00"></ion-input>
+    </ion-item>
+
+    <ion-item style="--background: #1F2937; --color: #E5E7EB; margin-bottom: 15px;">
+      <ion-label position="floating" style="color: #10B981;">BİR KATEGORİ SEÇİNİZ</ion-label>
+      <ion-select [(ngModel)]="tur" placeholder="SEÇİNİZ">
+        <ion-select-option value="Gida">GIDA</ion-select-option>
+        <ion-select-option value="Ulasim">ULAŞIM</ion-select-option>
+        <ion-select-option value="Eglence">EĞLENCE</ion-select-option>
+        <ion-select-option value="Diger">DİĞER</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" (click)="ekle()" style="--background: #10B981; --color: #121212; font-weight: bold;">
+      YENİ HARCAMA EKLE
+    </ion-button>
+  </div>
+
+  <!-- Açılır kapanır başlık -->
+  <ion-item (click)="ackapa()" lines="none" style="--background: transparent; margin-top: 10px; cursor: pointer;">
+    <ion-label style="color: #10B981; font-weight: bold;">GEÇMİŞ HARCAMALARIM</ion-label>
+    <ion-icon [name]="acikmi ? 'chevron-up-outline' : 'chevron-down-outline'" slot="end" style="color: #10B981;"></ion-icon>
+  </ion-item>
+
+  <ion-list *ngIf="acikmi" style="background: transparent;">
+    <ion-item-sliding *ngFor="let h of liste; let i = index">
+      <ion-item style="--background: #1F2937; --color: #E5E7EB;">
+        <ion-label>
+          <h2 style="color: #E5E7EB; font-weight: bold; text-transform: uppercase;">{{ h.ad }}</h2>
+          <p style="color: #9CA3AF;">{{ h.kategori }} - {{ h.tarih | date:'dd.MM.yyyy' }}</p>
+        </ion-label>
+        <ion-note slot="end" style="color: #10B981; font-weight: bold;">{{ h.fiyat }} TL</ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="sil(i)">
+          SİL
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
