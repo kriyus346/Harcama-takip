@@ -5,10 +5,9 @@ import { AlertController } from '@ionic/angular';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: false, // modül hatası vermesin diye ekledim hocam
+  standalone: false,
 })
 export class HomePage {
-  // kod içindeki isimler küçük harf ve basit
   liste: any[] = [];
   isim: string = "";
   para: any = null; 
@@ -55,14 +54,12 @@ export class HomePage {
 
   hesapla() {
     let t = 0;
-    // hoca reduce anlamaz diye for döngüsüyle yaptım
     for (let i = 0; i < this.liste.length; i++) {
       t = t + this.liste[i].fiyat;
     }
     this.toplam = t;
   }
 
-  // BURADAKİ METİNLER EKRANDA GÖZÜKTÜĞÜ İÇİN TÜRKÇE KARAKTERLİ VE BÜYÜK
   async sil(n: number) {
     const u = await this.alert.create({
       header: 'EMİN MİSİNİZ?', 
