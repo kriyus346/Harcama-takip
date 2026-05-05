@@ -5,7 +5,6 @@
 </ion-header>
 
 <ion-content style="--background: #121212; --color: #E5E7EB;">
-  <!-- Üstteki özet kartı -->
   <ion-card style="--background: #1F2937; --color: #E5E7EB; border-radius: 10px;">
     <ion-card-header>
       <ion-card-title style="color: #E5E7EB; font-size: 14px;">TOPLAM HARCAMA MİKTARI:</ion-card-title>
@@ -18,7 +17,6 @@
   </ion-card>
 
   <div style="padding: 10px;">
-    <!-- Giriş alanları başlıkları büyük ve Türkçe karakterli -->
     <ion-item style="--background: #1F2937; --color: #E5E7EB; margin-bottom: 5px;">
       <ion-label position="floating" style="color: #10B981;">HARCAMA ADI GİRİNİZ</ion-label>
       <ion-input [(ngModel)]="isim" type="text" placeholder="Örnek: Market Alışverişi"></ion-input>
@@ -44,7 +42,6 @@
     </ion-button>
   </div>
 
-  <!-- Açılır kapanır başlık -->
   <ion-item (click)="ackapa()" lines="none" style="--background: transparent; margin-top: 10px; cursor: pointer;">
     <ion-label style="color: #10B981; font-weight: bold;">GEÇMİŞ HARCAMALARIM</ion-label>
     <ion-icon [name]="acikmi ? 'chevron-up-outline' : 'chevron-down-outline'" slot="end" style="color: #10B981;"></ion-icon>
