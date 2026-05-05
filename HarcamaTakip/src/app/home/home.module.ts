@@ -8,10 +8,10 @@ import { HomePageRoutingModule } from './home-routing.module';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule, // ngModel çalışması için şart
+    FormsModule,
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage] // Sayfamızı buraya tanıttık
+  declarations: [HomePage]
 })
 export class HomePageModule {}
